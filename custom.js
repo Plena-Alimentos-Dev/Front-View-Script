@@ -1,9 +1,11 @@
 //-=-=-=-=-=-=-Função modal-=-=-=-=-=-=-=-=
 // Obtém o modal
 var modal = document.getElementById("myModal");
+//var modal = document.getElementById("ModalDel");
 
 // Obtém o botão que abre o modal
 var btn = document.getElementById("myBtn");
+//var btn = document.getElementById("idIcon");
 
 // Obtém o botão de fechar o modal
 var span = document.getElementsByClassName("close")[0];
@@ -27,3 +29,38 @@ window.onclick = function(event) {
   }
 }
 //=-=-=-=-=--=-=FIM MODAL=-=-=-=-=-=-=-
+
+function cancelaModalDel(){
+  var modalDel = document.getElementById("ModalDel")
+  modalDel.style.display = "none";
+}
+
+
+
+
+
+
+
+
+// Remove a lixeira quando o mouse sair da linha da tabela
+tabela.addEventListener("mouseleave", function(event) {
+    const linha = event.target.closest("tr");
+    if (linha) {
+        const lixeira = linha.querySelector(".lixeira");
+        if (lixeira) {
+            lixeira.parentNode.remove();
+        }
+    }
+});
+// Adicione eventos "mouseenter" e "mouseleave" para mostrar e esconder o ícone de lixeira quando o usuário passar o mouse sobre a linha
+const lixeiras = document.querySelectorAll(".lixeira");
+lixeiras.forEach(function(lixeira) {
+  const linha = lixeira.parentNode;
+  linha.addEventListener("mouseenter", function() {
+    lixeira.style.display = "inline-block";
+  });
+  linha.addEventListener("mouseleave", function() {
+    lixeira.style.display = "none";
+  });
+});
+
